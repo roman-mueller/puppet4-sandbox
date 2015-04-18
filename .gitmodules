@@ -1,0 +1,6 @@
+[submodule "code/environments/production/modules/puppetserver"]
+	path = code/environments/production/modules/puppetserver
+	url = https://github.com/camptocamp/puppet-puppetserver
+[submodule "code/environments/production/modules/stdlib"]
+	path = code/environments/production/modules/stdlib
+	url = https://github.com/puppetlabs/puppetlabs-stdlib
