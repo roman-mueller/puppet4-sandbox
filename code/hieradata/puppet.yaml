@@ -1,4 +1,4 @@
 ---
 classes                           :
-                                    - puppetserver
+                                    - role::puppetserver
 
