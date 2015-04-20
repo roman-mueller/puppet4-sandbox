@@ -50,6 +50,15 @@ Notice: Applied catalog in 0.52 seconds
 ```
 
 # Problems
+Sometimes puppetserver fails to start after the inital `vagrant up puppet`.  
+This is because there is a timeout set to 120 seconds that is not configurable which sometimes is hit (https://tickets.puppetlabs.com/browse/SERVER-557).    
+In that case you need to connect to the VM and manually start puppetserver and continue the puppet run:  
+```
+$ vagrant ssh puppet
+$ sudo systemctl start puppetserver.service
+$ sudo /opt/puppetlabs/bin/puppet agent -t
+```
+
 Changes made in `code/environments/production/*` do not always get picked up by the puppetserver.  
 I tried to debug this but couldn't figure it out.  
 It is not related to VirtualBox synced_folders, it also happens with local files in the VM.  
