@@ -59,7 +59,7 @@ $ sudo systemctl start puppetserver.service
 $ sudo /opt/puppetlabs/bin/puppet agent -t
 ```
 
-Changes made in `code/environments/production/*` do not always get picked up by the puppetserver.  
+Changes made in `code/environments/production/*` do not always get picked up by the puppetserver (https://tickets.puppetlabs.com/browse/SERVER-559).  
 I tried to debug this but couldn't figure it out.  
 It is not related to VirtualBox synced_folders, it also happens with local files in the VM.  
 If you made changes which don't get applied, try restarting the puppetserver: `systemctl restart puppetserver.service`
