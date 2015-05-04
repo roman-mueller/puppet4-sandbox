@@ -4,3 +4,18 @@
 [submodule "code/environments/production/modules/stdlib"]
 	path = code/environments/production/modules/stdlib
 	url = https://github.com/puppetlabs/puppetlabs-stdlib
+[submodule "code/environments/production/modules/puppetdb"]
+	path = code/environments/production/modules/puppetdb
+	url = https://github.com/puppetlabs/puppetlabs-puppetdb
+[submodule "code/environments/production/modules/inifile"]
+	path = code/environments/production/modules/inifile
+	url = https://github.com/puppetlabs/puppetlabs-inifile
+[submodule "code/environments/production/modules/postgresql"]
+	path = code/environments/production/modules/postgresql
+	url = https://github.com/puppetlabs/puppetlabs-postgresql/
+[submodule "code/environments/production/modules/concat"]
+	path = code/environments/production/modules/concat
+	url = https://github.com/puppetlabs/puppetlabs-concat
+[submodule "code/environments/production/modules/firewall"]
+	path = code/environments/production/modules/firewall
+	url = https://github.com/puppetlabs/puppetlabs-firewall

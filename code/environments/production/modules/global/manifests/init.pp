@@ -2,11 +2,6 @@
 
 class global {
 
-  service { 'firewalld':
-    ensure => 'stopped',
-    enable => false,
-  }
-
   host { 'puppet':
     ip => '10.13.37.2',
   }
