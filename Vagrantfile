@@ -13,7 +13,7 @@ Vagrant.configure(2) do |config|
     puppet.vm.provision "shell", path: "puppetupgrade.sh"
 
     puppet.vm.provision "shell",
-      inline: "/opt/puppetlabs/bin/puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp --debug"
+      inline: "/opt/puppetlabs/bin/puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp"
 
   end
 

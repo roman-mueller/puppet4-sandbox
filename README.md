@@ -1,5 +1,5 @@
 # About  
-This is a playground repository to get more familiar with Puppet 4, future parser and puppetserver 2.  
+This is a playground repository to get more familiar with Puppet 4, future parser, puppetdb and puppetserver 2.  
 It is intended to be a quick way to spawn up a fully working Puppet 4 environment.  
 
 In the Vagrantfile there are 2 VMs defined.  
