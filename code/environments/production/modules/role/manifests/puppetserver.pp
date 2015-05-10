@@ -26,6 +26,8 @@ class role::puppetserver {
 
   class { 'puppetdb':
     ssl_listen_address => '0.0.0.0',
+    listen_address     => '0.0.0.0',
+    open_listen_port   => true,
   }
   class { 'puppetdb::master::config':
     puppetdb_server     => 'puppet',

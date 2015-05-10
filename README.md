@@ -49,6 +49,12 @@ Info: Retrieving plugin
 Notice: Applied catalog in 0.52 seconds
 ```
 
+PuppetDB also gets installed and started by default.  
+The local port 8080 gets forwarded to the Vagrant VM to port 8080.  
+So you can access the PuppetDB dashboard via http://127.0.0.1:8080/dashboard/index.html.  
+All necessary keys get created when it starts for the first time.  
+The puppetserver is configured to store reports in the DB, so you can start playing with that too right away.  
+
 # Problems
 Sometimes puppetserver fails to start after the inital `vagrant up puppet`.  
 This is because there is a timeout set to 120 seconds that is not configurable which sometimes is hit (https://tickets.puppetlabs.com/browse/SERVER-557).    
@@ -76,8 +82,6 @@ The advantage of this over me creating a new box is that you can retrace every c
 At the time of writing Vagrant (v1.7.2) does not support Puppet 4 yet.
 It is always passing a deprecated option to puppet and it cannot be configured to find the binary at the new correct location.
 To work around this I'm using a inline shell provisioner to call puppet from Vagrant.
-
-As Vagrant only forwards specific ports by default to the nodes I'm deactivating `firewalld` on all hosts.
 
 There is no DNS server running in the private network.
 All nodes have each other in their `/etc/hosts/` files.
