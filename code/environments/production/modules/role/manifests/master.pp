@@ -1,6 +1,8 @@
-# class to deploy puppetserver
+# class to deploy master node:
+# - puppetserver
+# - puppetdb
 
-class role::puppetserver {
+class role::master {
 
   # https://tickets.puppetlabs.com/browse/SERVER-557
   file { '/etc/systemd/system/puppetserver.service.d':
