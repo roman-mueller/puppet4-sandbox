@@ -13,7 +13,7 @@ class role::master {
   }
 
   file { '/etc/systemd/system/puppetserver.service.d/local.conf':
-    ensure => 'file',
+    ensure  => 'file',
     content => "[Service]\nTimeoutStartSec=180",
     owner   => 'root',
     group   => 'root',
