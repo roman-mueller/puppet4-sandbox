@@ -1,5 +1,5 @@
 # About  
-This is a playground repository to get more familiar with Puppet 4, future parser, puppetdb and puppetserver 2.  
+This is a playground repository to get more familiar with Puppet 4, future parser, puppetdb, MCollective and puppetserver 2.  
 It is intended to be a quick way to spawn up a fully working Puppet 4 environment.  
 
 In the Vagrantfile there are 2 VMs defined.  
@@ -49,12 +49,22 @@ Info: Retrieving plugin
 Notice: Applied catalog in 0.52 seconds
 ```
 
-PuppetDB also gets installed and started by default.  
+PuppetDB gets installed and started by default.  
 The local port 8080 gets forwarded to the Vagrant VM to port 8080.  
 So you can access the PuppetDB dashboard via http://127.0.0.1:8080/dashboard/index.html.  
 All necessary keys get created when it starts for the first time.  
 The puppetserver is configured to store reports in the DB, so you can start playing with that too right away.  
 
+Also MCollective gets installed and configured.  
+It should also work out of the box, but the "node1" won't yet register to the environment:  
+```
+[vagrant@puppet ~]$ /opt/puppetlabs/bin/mco ping
+puppet                                   time=44.73 ms
+
+
+---- ping statistics ----
+1 replies max: 44.73 min: 44.73 avg: 44.73 
+```
 # Problems
 Sometimes puppetserver fails to start after the inital `vagrant up puppet`.  
 This is because there is a timeout set to 120 seconds that is not configurable which sometimes is hit (https://tickets.puppetlabs.com/browse/SERVER-557).    
