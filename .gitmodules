@@ -19,3 +19,13 @@
 [submodule "code/environments/production/modules/firewall"]
 	path = code/environments/production/modules/firewall
 	url = https://github.com/puppetlabs/puppetlabs-firewall
+[submodule "code/environments/production/modules/activemq"]
+	path = code/environments/production/modules/activemq
+	url = https://github.com/puppetlabs/puppetlabs-activemq
+[submodule "code/environments/production/modules/ruby"]
+	path = code/environments/production/modules/ruby
+	url = https://github.com/camptocamp/puppet-ruby
+[submodule "code/environments/production/modules/mcollective"]
+	path = code/environments/production/modules/mcollective
+	url = https://github.com/roman-mueller/puppet-mcollective
+	branch = puppet4_aio_support
