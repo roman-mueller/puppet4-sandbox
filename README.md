@@ -1,5 +1,5 @@
 # About  
-This is a playground repository to get more familiar with Puppet 4, future parser, puppetdb, MCollective and puppetserver 2.  
+This is a playground repository to get more familiar with Puppet 4, future parser, PuppetDB, MCollective and puppetserver 2.  
 It is intended to be a quick way to spawn up a fully working Puppet 4 environment.  
 
 In the Vagrantfile there are 2 VMs defined.  
@@ -65,33 +65,23 @@ puppet                                   time=44.73 ms
 ---- ping statistics ----
 1 replies max: 44.73 min: 44.73 avg: 44.73 
 ```
+
 # Problems
-Sometimes puppetserver fails to start after the inital `vagrant up puppet`.  
-This is because there is a timeout set to 120 seconds that is not configurable which sometimes is hit (https://tickets.puppetlabs.com/browse/SERVER-557).    
-In that case you need to connect to the VM and manually start puppetserver and continue the puppet run:  
-```
-$ vagrant ssh puppet
-$ sudo systemctl start puppetserver.service
-$ sudo /opt/puppetlabs/bin/puppet agent -t
-```
-
-Changes made in `code/environments/production/*` do not always get picked up by the puppetserver (https://tickets.puppetlabs.com/browse/SERVER-559).  
-I tried to debug this but couldn't figure it out.  
-It is not related to VirtualBox synced_folders, it also happens with local files in the VM.  
+Changes made in `code/environments/production/` do not always get picked up by the puppetserver.  
+This is a bug which should be resolved in the next version (https://tickets.puppetlabs.com/browse/PUP-4461).  
 If you made changes which don't get applied, try restarting the puppetserver: `systemctl restart puppetserver.service`
-
-Sometimes the initial provision step fails because it cannot download one of the RPMs.
-I'm unsure why this happens, it may be due to the network not being online yet in the VM when it runs.
-You can run `vagrant provision puppet` to try to re-run it.
 
 # Hacks
 There are not yet Vagrant boxes available with Puppet 4 pre-installed.
 I wrote a shell provisioner ("puppetupgrade.sh") which removes Puppet 3.x from the official puppetlabs Vagrant boxes and installs puppet-agent afterwards.
 The advantage of this over me creating a new box is that you can retrace every change I'm making to the trustworthy puppetlabs Vagrant box.
 
-At the time of writing Vagrant (v1.7.2) does not support Puppet 4 yet.
-It is always passing a deprecated option to puppet and it cannot be configured to find the binary at the new correct location.
-To work around this I'm using a inline shell provisioner to call puppet from Vagrant.
+At the time of writing Vagrant (v1.7.2) does not support Puppet 4 yet (https://github.com/mitchellh/vagrant/issues/3740).  
+It is always passing a deprecated option to puppet and it cannot be configured to find the binary at the new correct location.  
+To work around this I'm using a inline shell provisioner to call puppet from Vagrant.  
 
-There is no DNS server running in the private network.
-All nodes have each other in their `/etc/hosts/` files.
+There is no DNS server running in the private network.  
+All nodes have each other in their `/etc/hosts/` files.  
+
+Starting the puppetserver sometimes hits the systemd timeout (https://tickets.puppetlabs.com/browse/SERVER-557).  
+To work around this, the file `/etc/systemd/system/puppetserver.service.d/local.conf` gets created which overrides the timeout and sets it to 500 seconds.
