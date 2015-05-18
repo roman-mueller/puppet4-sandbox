@@ -71,6 +71,9 @@ Changes made in `code/environments/production/` do not always get picked up by t
 This is a bug which should be resolved in the next version (https://tickets.puppetlabs.com/browse/PUP-4461).  
 If you made changes which don't get applied, try restarting the puppetserver: `systemctl restart puppetserver.service`
 
+You cannot use cfacter yet, instead the legacy facter is used.  
+That is a bug and will be resolved soon in the next version (https://tickets.puppetlabs.com/browse/FACT-965).  
+
 # Hacks
 There are not yet Vagrant boxes available with Puppet 4 pre-installed.
 I wrote a shell provisioner ("puppetupgrade.sh") which removes Puppet 3.x from the official puppetlabs Vagrant boxes and installs puppet-agent afterwards.
