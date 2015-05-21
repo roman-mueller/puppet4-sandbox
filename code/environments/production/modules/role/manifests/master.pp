@@ -56,8 +56,8 @@ class role::master {
     require           => [ Yumrepo['puppetlabs-deps'], Class['puppetserver'], ],
   }
 
-  # unsure why, but this folder does not get crated and without it activemq
-  # fails to start
+  # unsure why, but this folder does not get created and without it activemq
+  # fails to work properly 
   file { '/usr/share/activemq/activemq-data':
     ensure  => 'directory',
     group   => 'activemq',
