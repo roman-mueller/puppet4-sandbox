@@ -3,6 +3,7 @@
 # - puppetdb
 
 class role::master {
+  include firewall
 
   # dependencies repo needed for activemq...
   yumrepo { 'puppetlabs-deps':
@@ -18,6 +19,12 @@ class role::master {
     owner  => 'root',
     group  => 'root',
     mode   => '0755',
+  }
+
+  firewall { '8140 accept - puppetserver':
+    port   => '8140',
+    proto  => 'tcp',
+    action => 'accept',
   }
 
   file { '/etc/systemd/system/puppetserver.service.d/local.conf':
