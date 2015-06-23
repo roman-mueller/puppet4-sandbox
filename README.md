@@ -10,6 +10,8 @@ Classes get configured via hiera (see `code/hieradata/*`).
 I'm using Vagrant 1.7.2 and VirtualBox as the provisioner.  
 I'm running this on Mac OS X but it should also run on other operating systems, but I haven't tested it.  
 
+Also tested and working on: SLES 11.3, VirtualBox-4.3-4.3.28_100309_sles11.0-1, Vagrant 1.7.2
+
 The puppetserver VM is configured to use 3GB of RAM.  
 The node is using the default (usually 512MB).  
 
