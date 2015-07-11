@@ -1,5 +1,5 @@
 # About  
-This is a playground repository to get more familiar with Puppet 4, future parser, PuppetDB, MCollective and puppetserver 2.  
+This is a bleeding edge playground repository to get more familiar with Puppet 4, future parser, PuppetDB 3, MCollective and puppetserver 2.  
 It is intended to be a quick way to spawn up a fully working Puppet 4 environment.  
 
 In the Vagrantfile there are 2 VMs defined.  
@@ -7,10 +7,11 @@ A puppetserver ("puppet") and a puppet node ("node1") both running CentOS 7.0.
 Classes get configured via hiera (see `code/environments/production/hieradata/*`).  
 
 # Requirements
-I'm using Vagrant 1.7.2 and VirtualBox as the provisioner.  
+I'm using Vagrant 1.7.3 and VirtualBox as the provisioner.  
 I'm running this on Mac OS X but it should also run on other operating systems, but I haven't tested it.  
+Older versions of Vagrant are not supported, as Puppet 4 support was only [added in 1.7.3](https://github.com/mitchellh/vagrant/issues/3740) 
 
-Also tested and working on: SLES 11.3, VirtualBox-4.3-4.3.28_100309_sles11.0-1, Vagrant 1.7.2
+Also tested and working on: SLES 11.3, VirtualBox-4.3-4.3.28_100309_sles11.0-1.  
 
 The puppetserver VM is configured to use 3GB of RAM.  
 The node is using the default (usually 512MB).  
@@ -80,10 +81,6 @@ That is a bug and will be resolved soon in the next version (https://tickets.pup
 There are not yet Vagrant boxes available with Puppet 4 pre-installed.
 I wrote a shell provisioner ("puppetupgrade.sh") which removes Puppet 3.x from the official puppetlabs Vagrant boxes and installs puppet-agent afterwards.
 The advantage of this over me creating a new box is that you can retrace every change I'm making to the trustworthy puppetlabs Vagrant box.
-
-At the time of writing Vagrant (v1.7.2) does not support Puppet 4 yet (https://github.com/mitchellh/vagrant/issues/3740).  
-It is always passing a deprecated option to puppet and it cannot be configured to find the binary at the new correct location.  
-To work around this I'm using a inline shell provisioner to call puppet from Vagrant.  
 
 There is no DNS server running in the private network.  
 All nodes have each other in their `/etc/hosts/` files.  

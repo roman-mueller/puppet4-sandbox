@@ -14,9 +14,10 @@ Vagrant.configure(2) do |config|
 
     puppet.vm.provision "shell", path: "puppetupgrade.sh"
 
-    puppet.vm.provision "shell",
-      inline: "/opt/puppetlabs/bin/puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp"
-
+    puppet.vm.provision "puppet" do |puppetapply|
+      puppetapply.environment = "production"
+      puppetapply.environment_path = ["vm", "/etc/puppetlabs/code/environments"]
+    end
   end
 
   config.vm.define "node1", primary: true do |node1|
