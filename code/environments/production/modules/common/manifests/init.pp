@@ -1,6 +1,6 @@
-# global class that gets applied to all nodes (see "code/hieradata/global.yaml")
+# common class that gets applied to all nodes (see "code/environments/production/hieradata/common.yaml")
 
-class global {
+class common {
 
   host { 'puppet':
     ip => '10.13.37.2',

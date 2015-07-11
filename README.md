@@ -4,7 +4,7 @@ It is intended to be a quick way to spawn up a fully working Puppet 4 environmen
 
 In the Vagrantfile there are 2 VMs defined.  
 A puppetserver ("puppet") and a puppet node ("node1") both running CentOS 7.0.  
-Classes get configured via hiera (see `code/hieradata/*`).  
+Classes get configured via hiera (see `code/environments/production/hieradata/*`).  
 
 # Requirements
 I'm using Vagrant 1.7.2 and VirtualBox as the provisioner.  
