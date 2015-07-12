@@ -70,10 +70,6 @@ puppet                                   time=44.73 ms
 ```
 
 # Problems
-Changes made in `code/environments/production/` do not always get picked up by the puppetserver.  
-This is a bug which should be resolved in the next version (https://tickets.puppetlabs.com/browse/PUP-4461).  
-If you made changes which don't get applied, try restarting the puppetserver: `systemctl restart puppetserver.service`
-
 You cannot use cfacter yet, instead the legacy facter is used.  
 That is a bug and will be resolved soon in the next version (https://tickets.puppetlabs.com/browse/FACT-965).  
 
@@ -87,3 +83,13 @@ All nodes have each other in their `/etc/hosts/` files.
 
 Starting the puppetserver sometimes hits the systemd timeout (https://tickets.puppetlabs.com/browse/SERVER-557).  
 To work around this, the file `/etc/systemd/system/puppetserver.service.d/local.conf` gets created which overrides the timeout and sets it to 500 seconds.
+
+# Tickets
+Working on the bleeding edge usually produces some problems and tickets, here are the ones opened while working on this repo:  
+- https://tickets.puppetlabs.com/browse/PUP-4461 manifest changes are ignored when using hiera_include: fixed  
+- https://tickets.puppetlabs.com/browse/CPR-186 PuppetDB 2.3.4 not in PC1 yum repositories: fixed  
+- https://tickets.puppetlabs.com/browse/CPR-184 Puppet 4 repository "repodata" folder missing: fixed  
+- https://tickets.puppetlabs.com/browse/CPR-183 puppetlabs-release-pc1 RPM missing: fixed
+- https://tickets.puppetlabs.com/browse/SERVER-557 systemd timeout is reached: still open  
+- https://tickets.puppetlabs.com/browse/FACT-1117 cfacter not working on CentOS7: still open  
+ 
