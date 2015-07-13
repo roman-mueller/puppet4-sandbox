@@ -1,6 +1,8 @@
 # About  
 This is a bleeding edge playground repository to get more familiar with Puppet 4, future parser, PuppetDB 3, MCollective and puppetserver 2.  
 It is intended to be a quick way to spawn up a fully working Puppet 4 environment.  
+It will automatically install the latest version of the full above stack.  
+If it breaks because of a new version, let me know and I'll try to fix it.  
 
 In the Vagrantfile there are 2 VMs defined.  
 A puppetserver ("puppet") and a puppet node ("node1") both running CentOS 7.0.  
