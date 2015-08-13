@@ -1,5 +1,5 @@
 # About  
-This is a bleeding edge playground repository to get more familiar with Puppet 4, future parser, PuppetDB 3, MCollective and puppetserver 2.  
+This is a bleeding edge playground repository to get more familiar with Puppet 4, future parser, cfacter, PuppetDB 3, MCollective and puppetserver 2.  
 It is intended to be a quick way to spawn up a fully working Puppet 4 environment.  
 It will automatically install the latest version of the full above stack.  
 If it breaks because of a new version, let me know and I'll try to fix it.  
@@ -70,10 +70,6 @@ puppet                                   time=44.73 ms
 ---- ping statistics ----
 1 replies max: 44.73 min: 44.73 avg: 44.73 
 ```
-
-# Problems
-You cannot use cfacter yet, instead the legacy facter is used.  
-That is a bug and will be resolved soon in the next version (https://tickets.puppetlabs.com/browse/FACT-965).  
 
 # Hacks
 There are not yet Vagrant boxes available with Puppet 4 pre-installed.
