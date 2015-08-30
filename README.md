@@ -26,6 +26,8 @@ $ cd puppet4-sandbox
 $ git submodule update --init --recursive
 ```
 
+Whenever you `git pull` this repository you should also update the submodules again.  
+
 Now you can simply run `vagrant up puppet` to get a fully set up puppetserver.  
 The `code/` folder will be a synced folder and gets mounted to `/etc/puppetlabs/code` inside the VM.  
 
@@ -72,12 +74,11 @@ puppet                                   time=44.73 ms
 ```
 
 # Hacks
-There are not yet Vagrant boxes available with Puppet 4 pre-installed.
-I wrote a shell provisioner ("puppetupgrade.sh") which removes Puppet 3.x from the official puppetlabs Vagrant boxes and installs puppet-agent afterwards.
-The advantage of this over me creating a new box is that you can retrace every change I'm making to the trustworthy puppetlabs Vagrant box.
+I wrote a shell provisioner ("puppetupgrade.sh") which updates `puppet-agent` before running it for the first time.  
+That way newly spawned Vagrant environments will always use the latest available version.  
 
 There is no DNS server running in the private network.  
-All nodes have each other in their `/etc/hosts/` files.  
+All nodes have each other in their `/etc/hosts` files.  
 
 Starting the puppetserver sometimes hits the systemd timeout (https://tickets.puppetlabs.com/browse/SERVER-557).  
 To work around this, the file `/etc/systemd/system/puppetserver.service.d/local.conf` gets created which overrides the timeout and sets it to 500 seconds.
@@ -90,4 +91,6 @@ Working on the bleeding edge usually produces some problems and tickets, here ar
 - https://tickets.puppetlabs.com/browse/CPR-183 puppetlabs-release-pc1 RPM missing: fixed
 - https://tickets.puppetlabs.com/browse/SERVER-557 systemd timeout is reached: still open  
 - https://tickets.puppetlabs.com/browse/FACT-1117 cfacter not working on CentOS7: still open  
- 
+- https://tickets.puppetlabs.com/browse/MODULES-2487 improve ::firewall port deprecation warning  
+- https://tickets.puppetlabs.com/browse/MODULES-2488 use dport instead of deprecated port  
+
