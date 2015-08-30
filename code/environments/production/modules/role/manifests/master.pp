@@ -22,7 +22,7 @@ class role::master {
   }
 
   firewall { '8140 accept - puppetserver':
-    port   => '8140',
+    dport  => '8140',
     proto  => 'tcp',
     action => 'accept',
   }
