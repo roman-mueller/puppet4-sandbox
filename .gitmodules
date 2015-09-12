@@ -25,3 +25,6 @@
 [submodule "code/environments/production/modules/ruby"]
 	path = code/environments/production/modules/ruby
 	url = https://github.com/camptocamp/puppet-ruby
+[submodule "code/environments/production/modules/mcollective"]
+	path = code/environments/production/modules/mcollective
+	url = https://github.com/camptocamp/puppet-mcollective
