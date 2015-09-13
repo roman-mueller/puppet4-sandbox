@@ -7,10 +7,10 @@ class role::master {
 
   # dependencies repo needed for activemq...
   yumrepo { 'puppetlabs-deps':
-    ensure   => 'present',
-    baseurl  => 'http://yum.puppetlabs.com/el/7/dependencies/$basearch',
-    descr    => 'Puppet Labs Dependencies El 7 - $basearch',
-    enabled  => '1',
+    ensure  => 'present',
+    baseurl => 'http://yum.puppetlabs.com/el/7/dependencies/$basearch',
+    descr   => 'Puppet Labs Dependencies El 7 - $basearch',
+    enabled => '1',
   }
 
   # https://tickets.puppetlabs.com/browse/SERVER-557
@@ -23,6 +23,12 @@ class role::master {
 
   firewall { '8140 accept - puppetserver':
     dport  => '8140',
+    proto  => 'tcp',
+    action => 'accept',
+  }
+
+  firewall { '61613 accept - activemq':
+    dport  => '61613',
     proto  => 'tcp',
     action => 'accept',
   }
@@ -60,7 +66,8 @@ class role::master {
     mq_admin_password   => 'puppet',
     mq_cluster_username => 'puppet',
     mq_cluster_password => 'puppet',
-    require           => [ Yumrepo['puppetlabs-deps'], Class['puppetserver'], ],
+    require             => [ Yumrepo['puppetlabs-deps'],
+                              Class['puppetserver'], ],
   }
 
   # unsure why, but this folder does not get created and without it activemq
@@ -70,32 +77,9 @@ class role::master {
     group   => 'activemq',
     owner   => 'activemq',
     mode    => '0755',
+    before  => [ Class['mcollective'], Class['mcollective::client'], ],
     require => Class['activemq'],
   }
-
-  class { '::mcollective':
-    connector         => 'activemq',
-    broker_host       => 'puppet',
-    broker_port       => '61613',
-    broker_user       => 'puppet',
-    broker_password   => 'puppet',
-    broker_ssl        => false,
-    security_provider => 'psk',
-    security_secret   => 'puppet',
-    use_node          => false,
-    require           => File['/usr/share/activemq/activemq-data'],
-  }
-  include ::mcollective::node
-
-  class { '::mcollective::client':
-    connector         => 'activemq',
-    broker_host       => 'puppet',
-    broker_port       => '61613',
-    broker_user       => 'puppet',
-    broker_password   => 'puppet',
-    security_provider => 'psk',
-    security_secret   => 'puppet',
-   }
 
 }
 

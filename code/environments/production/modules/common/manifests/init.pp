@@ -1,5 +1,10 @@
-# common class that gets applied to all nodes (see "code/environments/production/hieradata/common.yaml")
-
+# common class that gets applied to all nodes
+# See: "code/environments/production/hieradata/common.yaml"
+# It:
+#  - configures /etc/hosts entries
+#  - makes sure puppet is installed and running
+#  - makes sure mcollective + client is installed and running
+#
 class common {
 
   host { 'puppet':
@@ -18,6 +23,28 @@ class common {
     ensure  => running,
     enable  => true,
     require => Package['puppet-agent'],
+  }
+
+  class { '::mcollective':
+    connector         => 'activemq',
+    broker_host       => 'puppet',
+    broker_port       => '61613',
+    broker_user       => 'puppet',
+    broker_password   => 'puppet',
+    broker_ssl        => false,
+    security_provider => 'psk',
+    security_secret   => 'puppet',
+    use_node          => true,
+  }
+
+  class { '::mcollective::client':
+    connector         => 'activemq',
+    broker_host       => 'puppet',
+    broker_port       => '61613',
+    broker_user       => 'puppet',
+    broker_password   => 'puppet',
+    security_provider => 'psk',
+    security_secret   => 'puppet',
   }
 
 }
