@@ -63,14 +63,15 @@ All necessary keys get created when it starts for the first time.
 The puppetserver is configured to store reports in the DB, so you can start playing with that too right away.  
 
 Also MCollective gets installed and configured.  
-It should also work out of the box, but the "node1" won't yet register to the environment:  
+It should also work out of the box, also node1 will register after the initial Puppet run:  
 ```
-[vagrant@puppet ~]$ /opt/puppetlabs/bin/mco ping
-puppet                                   time=44.73 ms
+[root@puppet vagrant]# /opt/puppetlabs/bin/mco ping
+node1                                    time=29.86 ms
+puppet                                   time=67.98 ms
 
 
 ---- ping statistics ----
-1 replies max: 44.73 min: 44.73 avg: 44.73 
+2 replies max: 67.98 min: 29.86 avg: 48.92 
 ```
 
 # Hacks
