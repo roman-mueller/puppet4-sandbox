@@ -78,7 +78,6 @@ class profile::master {
     group   => 'activemq',
     owner   => 'activemq',
     mode    => '0755',
-    before  => [ Class['mcollective'], Class['mcollective::client'], ],
     require => Class['activemq'],
   }
 
