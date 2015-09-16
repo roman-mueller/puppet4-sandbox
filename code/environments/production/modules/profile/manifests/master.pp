@@ -54,9 +54,11 @@ class profile::master {
     open_listen_port   => true,
   }
   class { 'puppetdb::master::config':
-    puppetdb_server     => 'puppet',
-    puppet_service_name => 'puppetserver',
-    strict_validation   => false,
+    puppetdb_server         => 'puppet',
+    puppet_service_name     => 'puppetserver',
+    strict_validation       => false,
+    manage_report_processor => true,
+    enable_reports          => true,
   }
 
   # require puppetserver class to make sure java is installed and avoid
