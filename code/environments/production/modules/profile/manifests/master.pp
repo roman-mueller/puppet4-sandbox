@@ -55,7 +55,6 @@ class profile::master {
   }
   class { 'puppetdb::master::config':
     puppetdb_server         => 'puppet',
-    puppet_service_name     => 'puppetserver',
     strict_validation       => false,
     manage_report_processor => true,
     enable_reports          => true,
