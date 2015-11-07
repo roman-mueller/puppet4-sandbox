@@ -7,6 +7,14 @@
 #
 class common {
 
+  # needed for rubygem-stomp
+  yumrepo { 'puppetlabs-deps':
+    ensure  => 'present',
+    baseurl => 'http://yum.puppetlabs.com/el/7/dependencies/$basearch',
+    descr   => 'Puppet Labs Dependencies El 7 - $basearch',
+    enabled => '1',
+  }
+
   host { 'puppet':
     ip => '10.13.37.2',
   }
@@ -35,6 +43,7 @@ class common {
     security_provider => 'psk',
     security_secret   => 'puppet',
     use_node          => true,
+    require           => Yumrepo['puppetlabs-deps'],
   }
 
   class { '::mcollective::client':
@@ -45,6 +54,7 @@ class common {
     broker_password   => 'puppet',
     security_provider => 'psk',
     security_secret   => 'puppet',
+    require           => Yumrepo['puppetlabs-deps'],
   }
 
 }

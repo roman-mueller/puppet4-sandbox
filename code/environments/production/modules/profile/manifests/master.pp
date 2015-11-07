@@ -6,14 +6,6 @@ class profile::master {
 
   include firewall
 
-  # dependencies repo needed for activemq...
-  yumrepo { 'puppetlabs-deps':
-    ensure  => 'present',
-    baseurl => 'http://yum.puppetlabs.com/el/7/dependencies/$basearch',
-    descr   => 'Puppet Labs Dependencies El 7 - $basearch',
-    enabled => '1',
-  }
-
   # https://tickets.puppetlabs.com/browse/SERVER-557
   file { '/etc/systemd/system/puppetserver.service.d':
     ensure => 'directory',
