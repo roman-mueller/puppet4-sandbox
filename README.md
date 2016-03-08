@@ -75,6 +75,9 @@ puppet                                   time=67.98 ms
 ```
 
 # Hacks
+I use a MCollective module provided by camptocamp which they decided to discontinue.  
+I plan to migrate this to another module in the future, but at the moment it uses my fork of that module.
+
 I wrote a shell provisioner ("puppetupgrade.sh") which updates `puppet-agent` before running it for the first time.  
 That way newly spawned Vagrant environments will always use the latest available version.  
 
