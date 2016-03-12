@@ -34,27 +34,14 @@ class common {
   }
 
   class { '::mcollective':
-    connector         => 'activemq',
-    broker_host       => 'puppet',
-    broker_port       => '61613',
-    broker_user       => 'puppet',
-    broker_password   => 'puppet',
-    broker_ssl        => false,
-    security_provider => 'psk',
-    security_secret   => 'puppet',
-    use_node          => true,
-    require           => Yumrepo['puppetlabs-deps'],
-  }
-
-  class { '::mcollective::client':
-    connector         => 'activemq',
-    broker_host       => 'puppet',
-    broker_port       => '61613',
-    broker_user       => 'puppet',
-    broker_password   => 'puppet',
-    security_provider => 'psk',
-    security_secret   => 'puppet',
-    require           => Yumrepo['puppetlabs-deps'],
+    middleware_hosts          => [ 'puppet' ],
+    psk                       => 'puppet',
+    middleware_user           => 'puppet',
+    middleware_password       => 'puppet',
+    middleware_admin_user     => 'puppet',
+    middleware_admin_password => 'puppet',
+    client                    => true,
+    require                   => Yumrepo['puppetlabs-deps'],
   }
 
 }
