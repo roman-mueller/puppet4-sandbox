@@ -28,3 +28,6 @@
 [submodule "code/environments/production/modules/mcollective"]
 	path = code/environments/production/modules/mcollective
 	url = https://github.com/voxpupuli/puppet-mcollective
+[submodule "code/environments/production/modules/datacat"]
+	path = code/environments/production/modules/datacat
+	url = https://github.com/richardc/puppet-datacat
