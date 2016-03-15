@@ -31,3 +31,18 @@
 [submodule "code/environments/production/modules/datacat"]
 	path = code/environments/production/modules/datacat
 	url = https://github.com/richardc/puppet-datacat
+[submodule "code/environments/production/modules/apt"]
+	path = code/environments/production/modules/apt
+	url = https://github.com/puppetlabs/puppetlabs-apt
+[submodule "code/environments/production/modules/java"]
+	path = code/environments/production/modules/java
+	url = https://github.com/puppetlabs/puppetlabs-java
+[submodule "code/environments/production/modules/buildenv"]
+	path = code/environments/production/modules/buildenv
+	url = https://github.com/camptocamp/puppet-buildenv
+[submodule "code/environments/production/modules/augeasproviders_core"]
+	path = code/environments/production/modules/augeasproviders_core
+	url = https://github.com/hercules-team/augeasproviders_core
+[submodule "code/environments/production/modules/augeas"]
+	path = code/environments/production/modules/augeas
+	url = https://github.com/camptocamp/puppet-augeas
