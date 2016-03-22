@@ -36,16 +36,8 @@ Now you can simply run `vagrant up puppet` to get a fully set up puppetserver.
 The `code/` folder will be a synced folder and gets mounted to `/etc/puppetlabs/code` inside the VM.  
 
 If you want to attach a node to the puppetserver simply run `vagrant up node1`.  
-Once provisioned you only need to sign the certificate request on the puppetserver.  
-For that login to the puppet VM (`vagrant ssh puppet`).  
-Then check the queued certificate requests and sign it:  
-```
-[vagrant@puppet ~]$ sudo /opt/puppetlabs/bin/puppet cert list
-  "node1" (SHA256) E3:97:CE:74:78:0E:77:1C:9C:97:AC:77:BC:4B:27:19:9D:7F:6D:B1:7F:18:07:7A:DA:B8:77:D7:2F:15:4D:42
-[vagrant@puppet ~]$ sudo /opt/puppetlabs/bin/puppet cert sign node1
-Notice: Signed certificate request for node1
-Notice: Removing file Puppet::SSL::CertificateRequest node1 at '/etc/puppetlabs/puppet/ssl/ca/requests/node1.pem'
-```
+Once provisioned it is automatically connecting to the puppetserver and it gets automatically signed.  
+
 After that puppet will run automatically every 30 minutes on the node and apply your changes.  
 You can also run it manually:  
 ```
@@ -77,6 +69,20 @@ puppet                                   time=67.98 ms
 ---- ping statistics ----
 2 replies max: 67.98 min: 29.86 avg: 48.92 
 ```
+
+# Security
+This repository is meant as a non-production playground setup.  
+It is not a guide on how to setup a secure Puppet environment.  
+
+In particular this means:  
+
+- Auto signing is enabled, every node that connects to the puppetserver is automatically signed.  
+- MCollective uses a PSK and no SSL.  
+- The MCollective client gets deployed on every agent that connects to the puppetserver.
+- Passwords or PSKs are not randomized and easily guessable. 
+
+For a non publicly reachable playground this should be acceptable.  
+
 
 # Hacks
 I wrote a shell provisioner ("puppetupgrade.sh") which updates `puppet-agent` before running it for the first time.  

@@ -40,6 +40,16 @@ class profile::master {
     require => File['/etc/systemd/system/puppetserver.service.d/local.conf'],
   }
 
+  file { '/etc/puppetlabs/puppet/autosign.conf':
+    ensure  => 'file',
+    content => '*',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    require => Package['puppetserver'],
+    notify  => Service['puppetserver'],
+  }
+
   class { 'puppetdb':
     ssl_listen_address => '0.0.0.0',
     listen_address     => '0.0.0.0',
