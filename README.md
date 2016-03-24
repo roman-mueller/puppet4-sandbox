@@ -5,7 +5,7 @@ It will automatically install the latest version of the full above stack.
 If it breaks because of a new version, let me know and I'll try to fix it.  
 It was last suceessfully tested with:  
 puppet-agent-1.4.0  
-puppetserver-2.3.0  
+puppetserver-2.3.1  
 puppetdb-4.0.0  
 
 In the Vagrantfile there are 2 VMs defined.  
