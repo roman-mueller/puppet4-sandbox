@@ -4,7 +4,7 @@ It is intended to be a quick way to spawn up a fully working Puppet 4 environmen
 It will automatically install the latest version of the full above stack.  
 If it breaks because of a new version, let me know and I'll try to fix it.  
 It was last suceessfully tested with:  
-puppet-agent-1.4.1  
+puppet-agent-1.4.2  
 puppetserver-2.3.1  
 puppetdb-4.0.0  
 
