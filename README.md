@@ -5,8 +5,8 @@ It will automatically install the latest version of the full above stack.
 If it breaks because of a new version, let me know and I'll try to fix it.  
 It was last suceessfully tested with:  
 puppet-agent-1.4.2  
-puppetserver-2.3.1  
-puppetdb-4.0.0  
+puppetserver-2.3.2  
+puppetdb-4.0.2  
 
 In the Vagrantfile there are 2 VMs defined.  
 A puppetserver ("puppet") and a puppet node ("node1") both running CentOS 7.0.  
