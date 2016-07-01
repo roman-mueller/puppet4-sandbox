@@ -59,7 +59,7 @@ All necessary keys get created when it starts for the first time.
 The puppetserver is configured to store reports in the DB, so you can start playing with that too right away.  
 The [PuppetDB CLI tools](https://docs.puppet.com/puppetdb/master/pdb_client_tools.html) are installed on the "puppet" node and should work right away:
 ```
-} ][vagrant@puppet ~]$ /opt/puppetlabs/bin/puppet query 'nodes [ certname ]{ limit 10 }'
+[vagrant@puppet ~]$ /opt/puppetlabs/bin/puppet query 'nodes [ certname ]{ limit 10 }'
 [ {
   "certname" : "puppet"
 }, {
