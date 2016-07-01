@@ -57,9 +57,18 @@ The local port 8080 gets forwarded to the Vagrant VM to port 8080.
 So you can access the PuppetDB dashboard via http://127.0.0.1:8080/dashboard/index.html.  
 All necessary keys get created when it starts for the first time.  
 The puppetserver is configured to store reports in the DB, so you can start playing with that too right away.  
+The [PuppetDB CLI tools](https://docs.puppet.com/puppetdb/master/pdb_client_tools.html) are installed on the "puppet" node and should work right away:
+```
+} ][vagrant@puppet ~]$ /opt/puppetlabs/bin/puppet query 'nodes [ certname ]{ limit 10 }'
+[ {
+  "certname" : "puppet"
+}, {
+  "certname" : "node1"
+} ]
+``` 
 
-Also MCollective gets installed and configured.  
-It should also work out of the box, also node1 will register after the initial Puppet run:  
+MCollective gets installed and configured as well.  
+It should also work out of the box, and node1 will register after the initial Puppet run:  
 ```
 [root@puppet vagrant]# /opt/puppetlabs/bin/mco ping
 node1                                    time=29.86 ms

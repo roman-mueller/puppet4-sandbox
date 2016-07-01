@@ -84,5 +84,9 @@ class master {
     require => Class['activemq'],
   }
 
+  package { 'puppet-client-tools':
+    ensure => present,
+  }
+
 }
 
