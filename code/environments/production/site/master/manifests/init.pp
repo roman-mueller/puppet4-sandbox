@@ -4,7 +4,7 @@
 
 class master {
 
-  include firewall
+  include ::firewall
 
   # https://tickets.puppetlabs.com/browse/SERVER-557
   file { '/etc/systemd/system/puppetserver.service.d':
@@ -35,7 +35,7 @@ class master {
     require => File['/etc/systemd/system/puppetserver.service.d'],
   }
 
-  class { 'puppetserver':
+  class { '::puppetserver':
     before  => Service['puppet'],
     require => File['/etc/systemd/system/puppetserver.service.d/local.conf'],
   }
@@ -50,12 +50,12 @@ class master {
     notify  => Service['puppetserver'],
   }
 
-  class { 'puppetdb':
+  class { '::puppetdb':
     ssl_listen_address => '0.0.0.0',
     listen_address     => '0.0.0.0',
     open_listen_port   => true,
   }
-  class { 'puppetdb::master::config':
+  class { '::puppetdb::master::config':
     puppetdb_server         => 'puppet',
     strict_validation       => false,
     manage_report_processor => true,
@@ -64,7 +64,7 @@ class master {
 
   # require puppetserver class to make sure java is installed and avoid
   # puppetlabs/java dependency
-  class  { 'activemq':
+  class  { '::activemq':
     mq_broker_name      => 'puppet',
     mq_admin_username   => 'puppet',
     mq_admin_password   => 'puppet',

@@ -1,4 +1,4 @@
 ---
-classes                           :
-                                    - common
+classes:
+  - common
 
