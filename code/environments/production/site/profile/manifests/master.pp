@@ -2,6 +2,6 @@
 
 class profile::master {
 
-  include ::master 
+  include ::master
 
 }
