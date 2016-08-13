@@ -60,6 +60,8 @@ class master {
     strict_validation       => false,
     manage_report_processor => true,
     enable_reports          => true,
+    # https://tickets.puppetlabs.com/browse/PDB-2591
+    restart_puppet          => false,
   }
 
   # require puppetserver class to make sure java is installed and avoid
