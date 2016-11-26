@@ -4,9 +4,9 @@ It is intended to be a quick way to spawn up a fully working Puppet 4 environmen
 It will automatically install the latest version of the full above stack.  
 If it breaks because of a new version, let me know and I'll try to fix it.  
 It was last suceessfully tested with:  
-Puppet 4.8.0  
-puppet-agent-1.8.0  
-puppetserver-2.7.0  
+Puppet 4.8.1  
+puppet-agent-1.8.1  
+puppetserver-2.7.1  
 puppetdb-4.3.0 
 
 In the Vagrantfile there are 2 VMs defined.  
